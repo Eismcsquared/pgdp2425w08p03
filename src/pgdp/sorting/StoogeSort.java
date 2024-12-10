@@ -18,7 +18,21 @@ public final class StoogeSort {
     }
 
     public static void stoogeSortHelper(int[] array, int from, int to) {
-
+        if (to - from < 2) {
+            return;
+        }
+        if (to - from == 2) {
+            if (array[from] > array[from + 1]) {
+                int tmp = array[from];
+                array[from] = array[from + 1];
+                array[from + 1] = tmp;
+            }
+            return;
+        }
+        int oneThird = (to - from) / 3;
+        stoogeSortHelper(array, from, to - oneThird);
+        stoogeSortHelper(array, from + oneThird, to);
+        stoogeSortHelper(array, from, to - oneThird);
     }
 
     // print method for the output testing in main method.

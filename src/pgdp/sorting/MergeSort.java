@@ -10,8 +10,28 @@ public class MergeSort {
      */
 
     public static List<Integer> mergeSort(List<Integer> list) {
-        //TODO: Implement recursively.
-        return null;
+        if (list.size() <= 1) {
+            return List.copyOf(list);
+        }
+        return merge(mergeSort(list.subList(0, list.size() / 2)), mergeSort(list.subList(list.size() / 2, list.size())));
+    }
+
+    private static List<Integer> merge(List<Integer> first, List<Integer> second) {
+        if (first.isEmpty()) {
+            return List.copyOf(second);
+        }
+        if (second.isEmpty()) {
+            return List.copyOf(first);
+        }
+        List<Integer> result = new LinkedList<>();
+        if (first.get(0) < second.get(0)) {
+            result.add(first.get(0));
+            result.addAll(merge(first.subList(1, first.size()), second));
+        } else {
+            result.add(second.get(0));
+            result.addAll(merge(first, second.subList(1, second.size())));
+        }
+        return result;
     }
 
 
@@ -22,8 +42,8 @@ public class MergeSort {
         List<Integer> singleElementList = Arrays.asList(42);
         List<Integer> emptyList = new ArrayList<>();
 
-//        System.out.println("Original: " + unsortedList);
-//        System.out.println("Sorted:   " + MergeSort.mergesort(unsortedList));
+        System.out.println("Original: " + unsortedList);
+        System.out.println("Sorted:   " + MergeSort.mergeSort(unsortedList));
 //
 //        System.out.println("\nOriginal: " + alreadySortedList);
 //        System.out.println("Sorted:   " + MergeSort.mergesort(alreadySortedList));
