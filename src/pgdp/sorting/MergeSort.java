@@ -34,7 +34,6 @@ public class MergeSort {
         return result;
     }
 
-
     public static void main(String[] args) {
         //TODO: Uncomment after implementing the mergeSort method to see the outputs .
         List<Integer> unsortedList = Arrays.asList(5, 3, 8, 6, 2, 7, 4, 1);
