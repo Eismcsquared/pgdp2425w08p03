@@ -16,7 +16,7 @@ public class MergeSort {
         return merge(mergeSort(list.subList(0, list.size() / 2)), mergeSort(list.subList(list.size() / 2, list.size())));
     }
 
-    private static List<Integer> merge(List<Integer> first, List<Integer> second) {
+    public static List<Integer> merge(List<Integer> first, List<Integer> second) {
         if (first.isEmpty()) {
             return List.copyOf(second);
         }
@@ -33,6 +33,7 @@ public class MergeSort {
         }
         return result;
     }
+
 
     public static void main(String[] args) {
         //TODO: Uncomment after implementing the mergeSort method to see the outputs .
